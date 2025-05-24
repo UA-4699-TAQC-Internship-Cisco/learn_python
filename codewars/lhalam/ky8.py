@@ -14,12 +14,14 @@ def volume_of_a_rectangular_cuboid(length, width, height):
     else:
         return u"It is not a rectangular cuboid. Please check your data."
 
+
 def convert_mpg_to_kpl(mpg):
     # 1 імперський галон = 4, 54609188 літра
     # 1 миля = 1, 609344 кілометра
     kilometres_per_litres = 1.609344/4.54609188
     result = mpg*kilometres_per_litres
     return round(result, 2)
+
 
 def square_root_or_not(array):
     result = []
@@ -29,6 +31,7 @@ def square_root_or_not(array):
         else:
             result.append(int(a**2))
     return result
+
 
 def count_positives_sum_negatives(array):
     if len(array) == 0:
@@ -48,8 +51,10 @@ def count_positives_sum_negatives(array):
         else:
             return [positives_count, negatives_sum]
 
+
 def  convert_string_to_number(string):
     return int(string)
+
 
 def is_wilson_prime(p):
     if p < 2:
@@ -63,8 +68,10 @@ def is_wilson_prime(p):
 
     return numerator % denominator == 0
 
+
 def formatting_decimal_places (num):
     return round(num, 2)
+
 
 def  divisible_by_number(arr, num):
     result = []
