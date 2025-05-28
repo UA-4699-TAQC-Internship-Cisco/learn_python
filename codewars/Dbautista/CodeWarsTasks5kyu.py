@@ -78,7 +78,7 @@ def smallest(n):
                 from_idx = i
                 to_idx = j
             elif new_number == min_number:
-                # tie-breaker: prefer smaller i, then smaller j
+                
                 if i < from_idx or (i == from_idx and j < to_idx):
                     from_idx = i
                     to_idx = j
