@@ -1,54 +1,71 @@
-def is_prime(n):
-    if n < 2:
+"""Auto-formatted with proper docstrings and variable renaming."""
+
+
+def is_prime(number):
+    """Check if a number is a prime number."""
+    if number < 2:
         return False
-    for i in range(2, int(n ** 0.5) + 1):
-        if n % i == 0:
+    for input_value in range(2, int(number ** 0.5) + 1):
+        if number % input_value == 0:
             return False
     return True
 
-def gap(g, m, n):
+
+def gap(gap_value, value, number):
+    """Find the first pair of prime numbers within a given range with a specific gap."""
     prev_prime = None
-    for i in range(m, n + 1):
-        if is_prime(i):
-            if prev_prime and i - prev_prime == g:
-                return [prev_prime, i]
-            prev_prime = i
+    for input_value in range(value, number + 1):
+        if is_prime(input_value):
+            if prev_prime and input_value - prev_prime == gap_value:
+                return [prev_prime, input_value]
+            prev_prime = input_value
     return None
 
-def zeros(n):
+
+def zeros(number):
+    """Calculate the number of trailing zeros in a factorial of a given number."""
     count = 0
-    i = 5
-    while n // i > 0:
-        count += n // i
-        i *= 5
+    input_value = 5
+    while number // input_value > 0:
+        count += number // input_value
+        input_value *= 5
     return count
 
-def perimeter(n):
-    fib = [1, 1]
-    while len(fib) <= n + 1:
-        fib.append(fib[-1] + fib[-2])
-    return sum(fib[:n + 1]) * 4
 
-def solve(m):
+def perimeter(number):
+    """Return the perimeter of squares in the Fibonacci sequence up to a given index."""
+    fib = [1, 1]
+    while len(fib) <= number + 1:
+        fib.append(fib[-1] + fib[-2])
+    return sum(fib[:number + 1]) * 4
+
+
+def solve(value):
+    """Find the number such that the infinite series equals a given value using binary search."""
     left = 0.0
     right = 1.0
     eps = 1e-12
     while right - left > eps:
         mid = (left + right) / 2
-        series_sum = mid / (1 - mid)**2
-        if series_sum < m:
+        series_sum = mid / (1 - mid) ** 2
+        if series_sum < value:
             left = mid
         else:
             right = mid
     return (left + right) / 2
 
-def smallest(n):
-    s = str(n)
-    best = (n, 0, 0)
-    for i in range(len(s)):
-        removed = s[:i] + s[i+1:]
-        for j in range(len(removed)+1):
-            candidate = int(removed[:j] + s[i] + removed[j:])
-            if (candidate < best[0]) or (candidate == best[0] and (i < best[1] or (i == best[1] and j < best[2]))):
+
+def smallest(number):
+    """Return the smallest number by moving one digit to another position."""
+    string_input = str(number)
+    best = (number, 0, 0)
+    for i, digit in enumerate(string_input):
+        removed = string_input[:i] + string_input[i + 1:]
+        for j in range(len(removed) + 1):
+            candidate = int(removed[:j] + digit + removed[j:])
+            if (
+                    candidate < best[0]
+                    or (candidate == best[0] and (i < best[1] or (i == best[1] and j < best[2])))
+            ):
                 best = (candidate, i, j)
     return list(best)
