@@ -5,25 +5,24 @@ import math
 import re
 
 
-def find_nb(m):
-    x = math.isqrt(m)
-    if x * x != m:
+def find_nb(target_volume):
+    sqrt_volume = int(math.sqrt(target_volume))
+    if sqrt_volume * sqrt_volume != target_volume:
         return -1
 
-    discriminant = 1 + 8 * x
+    discriminant = 1 + 8 * sqrt_volume
     if discriminant < 0:
         return -1
 
-    sqrt_discriminant = math.isqrt(discriminant)
+    sqrt_discriminant = int(math.sqrt(discriminant))
     if sqrt_discriminant * sqrt_discriminant != discriminant:
         return -1
 
-    n = (-1 + sqrt_discriminant) // 2
+    number_of_cubes = (-1 + sqrt_discriminant) // 2
 
-    if (n * (n + 1) // 2) ** 2 == m:
-        return n
-    else:
-        return -1
+    if (number_of_cubes * (number_of_cubes + 1) // 2) ** 2 == target_volume:
+        return number_of_cubes
+    return -1
 
 
 # Easy Balance Checking
@@ -33,8 +32,8 @@ def balance(book):
     cleaned = re.sub(r"[^a-zA-Z0-9.\n ]+", "", book)
     lines = [line.strip() for line in cleaned.strip().split('\n') if line.strip()]
     original_balance = float(lines[0])
-    balance = original_balance
-    report = ["Original Balance: {:.2f}".format(balance)]
+    current_balance = original_balance
+    report = ["Original Balance: {:.2f}".format(current_balance)]
     total_expense = 0.0
     count = 0
 
@@ -43,7 +42,7 @@ def balance(book):
         check_number = parts[0]
         category = parts[1]
         amount = float(parts[2])
-        balance -= amount
+        current_balance -= amount
         total_expense += amount
         count += 1
         report.append("{} {} {:.2f} Balance {:.2f}".format(check_number, category, amount, balance))
@@ -54,11 +53,12 @@ def balance(book):
 
     return "'\r\n'".join(report)
 
+
 # Floating-point Approximation (I)
 
 
-def f(x):
-    return x / (math.sqrt(1 + x) + 1)
+def floating(number):
+    return number / (math.sqrt(1 + number) + 1)
 
 
 # Rainfall
@@ -76,8 +76,8 @@ def mean(town, strng):
 
 
 def variance(town, strng):
-    mu = mean(town, strng)
-    if mu == -1:
+    result = mean(town, strng)
+    if result == -1:
         return -1
 
     records = strng.split('\n')
@@ -86,8 +86,9 @@ def variance(town, strng):
             data = record.split(":")[1]
             pairs = data.split(",")
             values = [float(p.split()[1]) for p in pairs]
-            return sum((x - mu) ** 2 for x in values) / len(values)
+            return sum((x - result) ** 2 for x in values) / len(values)
     return -1
+
 
 # Ranking NBA teams
 
@@ -97,12 +98,19 @@ def nba_cup(result_sheet, to_find):
         return ""
 
     result_lines = result_sheet.split(",")
-    W = D = L = Scored = Conceded = Points = 0
+    stats = {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "points": 0
+    }
     played = False
 
     for match in result_lines:
         if re.search(r'\d+\.\d+', match):
-            return f"Error(float number):{match}"
+            return "Error(float number):{}".format(match)
 
         match_re = re.match(r"(.+?) (\d+) (.+?) (\d+)$", match.strip())
         if not match_re:
@@ -116,35 +124,37 @@ def nba_cup(result_sheet, to_find):
             continue
 
         played = True
+        is_team1 = (to_find == team1)
 
-        if to_find == team1:
-            Scored += score1
-            Conceded += score2
-            if score1 > score2:
-                W += 1
-                Points += 3
-            elif score1 < score2:
-                L += 1
-            else:
-                D += 1
-                Points += 1
-        elif to_find == team2:
-            Scored += score2
-            Conceded += score1
-            if score2 > score1:
-                W += 1
-                Points += 3
-            elif score2 < score1:
-                L += 1
-            else:
-                D += 1
-                Points += 1
+        team_score = score1 if is_team1 else score2
+        opponent_score = score2 if is_team1 else score1
+
+        stats["scored"] += team_score
+        stats["conceded"] += opponent_score
+
+        if team_score > opponent_score:
+            stats["wins"] += 1
+            stats["points"] += 3
+        elif team_score < opponent_score:
+            stats["losses"] += 1
+        else:
+            stats["draws"] += 1
+            stats["points"] += 1
 
     if not played:
-        return f"{to_find}:This team didn't play!"
+        return "{}:This team didn't play!".format(to_find)
 
-    return f"{to_find}:W={W};D={D};L={L};Scored={Scored};Conceded={Conceded};Points={Points}"
-
+    return (
+        "{}:W={};D={};L={};Scored={};Conceded={};Points={}".format(
+            to_find,
+            stats["wins"],
+            stats["draws"],
+            stats["losses"],
+            stats["scored"],
+            stats["conceded"],
+            stats["points"]
+        )
+    )
 
 # Help the bookseller !
 
@@ -173,4 +183,3 @@ def stock_list(stocklist, categories):
 
     result = " - ".join(result_parts)
     return result
-
