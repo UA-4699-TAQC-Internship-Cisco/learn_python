@@ -26,12 +26,12 @@ def converter(mpg):
 
 def square_or_square_root(arr):
     result = []
-    for n in arr:
-        root = math.sqrt(n)
+    for i in arr:
+        root = math.sqrt(i)
         if root.is_integer():
             result.append(int(root))
         else:
-            result.append(n ** 2)
+            result.append(i ** 2)
     return result
 
 
@@ -39,39 +39,40 @@ def square_or_square_root(arr):
 
 
 def count_positives_sum_negatives(arr):
-    if not arr:
-        return []
-    else:
-        a = 0
-        b = 0
-        for i in arr:
-            if i > 0:
-                a += 1
-            elif i < 0:
-                b += i
+    positive_count = 0
+    negative_sum = 0
+    result = []
 
-        return [a, b]
+    if arr:
+        for num in arr:
+            if num > 0:
+                positive_count += 1
+            elif num < 0:
+                negative_sum += num
+        result = [positive_count, negative_sum]
+
+    return result
 
 
 # Convert a String to a Number
 
 
-def string_to_number(s):
-    return int(s)
+def string_to_number(my_string):
+    return int(my_string)
 
 
 # Willson primes
 
 
-def am_i_wilson(n):
-    return n in {5, 13, 563}
+def am_i_wilson(number):
+    return number in {5, 13, 563}
 
 
 # Formatting decimal places
 
 
-def two_decimal_places(n):
-    return round(n, 2)
+def two_decimal_places(number):
+    return round(number, 2)
 
 # Find numbers which are divisible by given number
 
