@@ -1,6 +1,9 @@
-# Build a pile of Cubes
+import math
+import re
+
 
 def find_nb(m):
+    """Find number of cubes n such that 1^3 + 2^3 + ... + n^3 = m"""
     total = 0
     n = 0
     while total < m:
@@ -8,19 +11,18 @@ def find_nb(m):
         total += n ** 3
     return n if total == m else -1
 
-# Easy Balance Checking
-
-import re
 
 def balance(book):
-
-    lines = [re.sub(r'[^a-zA-Z0-9.\s]', '', line).strip() for line in book.strip().splitlines() if line.strip()]
-
+    """Clean and compute balance sheet"""
+    lines = [
+        re.sub(r'[^a-zA-Z0-9.\s]', '', line).strip()
+        for line in book.strip().splitlines() if line.strip()
+    ]
 
     original_balance = float(lines[0])
     balance_now = original_balance
 
-    result = [f"Original Balance: {format(original_balance, '.2f')}"]
+    result = ["Original Balance: %.2f" % original_balance]
     total_expense = 0.0
     num_entries = 0
 
@@ -29,78 +31,71 @@ def balance(book):
         check_number = parts[0]
         category = parts[1]
         amount = float(parts[2])
-        
+
         balance_now -= amount
         total_expense += amount
         num_entries += 1
-        
-        result.append(f"{check_number} {category} {format(amount, '.2f')} Balance {format(balance_now, '.2f')}")
+
+        result.append(
+            "%s %s %.2f Balance %.2f" % (check_number, category, amount, balance_now)
+        )
 
     average_expense = total_expense / num_entries if num_entries else 0
 
-    result.append(f"Total expense  {format(total_expense, '.2f')}")
-    result.append(f"Average expense  {format(average_expense, '.2f')}")
+    result.append("Total expense  %.2f" % total_expense)
+    result.append("Average expense  %.2f" % average_expense)
 
     return "\r\n".join(result)
 
 
-# Floating-point Approximation (I)
-
-import math
-
 def f(x):
+    """Return approximation function value"""
     return x / (math.sqrt(1 + x) + 1)
 
-# Rainfall
 
 def parse_city_data(town, strng):
+    """Extract rainfall data for a specific town"""
     for line in strng.split('\n'):
         if line.startswith(town + ":"):
-
             values = line.split(":")[1]
-  
             rainfalls = [float(part.split()[1]) for part in values.split(",")]
             return rainfalls
     return None
 
+
 def mean(town, strng):
+    """Calculate mean rainfall for the town"""
     rainfalls = parse_city_data(town, strng)
     if rainfalls is None:
         return -1
     return sum(rainfalls) / len(rainfalls)
 
+
 def variance(town, strng):
+    """Calculate variance of rainfall for the town"""
     rainfalls = parse_city_data(town, strng)
     if rainfalls is None:
         return -1
-    m = mean(town, strng)
-    return sum((x - m) ** 2 for x in rainfalls) / len(rainfalls)
+    mean_value = mean(town, strng)
+    return sum((x - mean_value) ** 2 for x in rainfalls) / len(rainfalls)
 
-# Ranking NBA teams
-
-import re
 
 def nba_cup(result_sheet, to_find):
+    """Return NBA stats for the given team"""
     if not to_find:
         return ""
 
-    w = d = l = scored = conceded = points = 0
+    wins = draws = losses = scored = conceded = points = 0
     found = False
 
     games = result_sheet.split(',')
 
     for game in games:
-        if not to_find in game:
+        if to_find not in game:
             continue
 
         if re.search(r'\d+\.\d+', game):
-            return f"Error(float number):{game}"
-
-
-        nums = re.findall(r'\d+', game)
-        if len(nums) < 2:
-            continue
-
+            return "Error(float number):%s" % game
 
         match = re.match(r'^(.*) (\d+) (.*) (\d+)$', game.strip())
         if not match:
@@ -117,35 +112,37 @@ def nba_cup(result_sheet, to_find):
         found = True
 
         if to_find == team1:
-            s_for, s_against = score1, score2
+            score_for, score_against = score1, score2
         else:
-            s_for, s_against = score2, score1
+            score_for, score_against = score2, score1
 
-        scored += s_for
-        conceded += s_against
+        scored += score_for
+        conceded += score_against
 
-        if s_for > s_against:
-            w += 1
+        if score_for > score_against:
+            wins += 1
             points += 3
-        elif s_for < s_against:
-            l += 1
+        elif score_for < score_against:
+            losses += 1
         else:
-            d += 1
+            draws += 1
             points += 1
 
     if not found:
-        return f"{to_find}:This team didn't play!"
+        return "%s:This team didn't play!" % to_find
 
-    return f"{to_find}:W={w};D={d};L={l};Scored={scored};Conceded={conceded};Points={points}"
+    return (
+        "%s:W=%d;D=%d;L=%d;Scored=%d;Conceded=%d;Points=%d"
+        % (to_find, wins, draws, losses, scored, conceded, points)
+    )
 
-
-# Help the bookseller !
 
 def stock_list(stocklist, categories):
+    """Summarize stock by book categories"""
     if not stocklist or not categories:
         return ""
 
-    totals = {cat: 0 for cat in categories}
+    totals = dict((cat, 0) for cat in categories)
 
     for item in stocklist:
         parts = item.split()
@@ -156,4 +153,4 @@ def stock_list(stocklist, categories):
         if category in totals:
             totals[category] += quantity
 
-    return " - ".join(f"({cat} : {totals[cat]})" for cat in categories)
+    return " - ".join("( %s : %d )" % (cat, totals[cat]) for cat in categories)
