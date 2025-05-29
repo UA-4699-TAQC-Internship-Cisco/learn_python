@@ -35,14 +35,14 @@ class TestLitresSolutions(unittest.TestCase):
 
         self.test_cases = [
             (0, 0),
-            (0.5, 0),
             (1, 0),
             (2, 1),
             (3, 1),
-            (6.7, 3),
+            (1.4, 0),
+            (12.3, 6),
+            (0.82, 0),
             (11.8, 5),
             (1787, 893),
-            (float('1e6'), 500000),
         ]
 
     def test_all_solutions_1(self):
