@@ -1,14 +1,9 @@
-import os
-import sys
 import unittest
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, BASE_DIR)
-
-from kyu8 import litres as litres_1
+from codewars.YuliaShap.kyu8 import litres as litres_1
 from ..Dbautista.codewars_tasks_8kyu import litres as litres_2
-from ..mpeshko.ky8 import litres as litres_3
 from ..TYakushevych.ky8 import litres as litres_4
+from ..mpeshko.ky8 import litres as litres_3
 # from student5.solution import litres as litres_5
 # from student6.solution import litres as litres_6
 # from student7.solution import litres as litres_7
@@ -42,15 +37,14 @@ class TestLitresSolutions(unittest.TestCase):
 
     def test_all_solutions(self):
         for name, func in self.solutions:
-            print("\nTesting solution: {}".format(name))
+            print "\nTesting solution: {}".format(name)
             for time, expected in self.test_cases:
                 result = func(time)
                 msg = ("[{}] input: {}, got: {}, expected: {}"
                        .format(name, time, result, expected))
                 self.assertEqual(result, expected, msg)
-            print("Solution '{}' passed all tests!".format(name))
+            print "Solution '{}' passed all tests!".format(name)
 
 
 if __name__ == '__main__':
     unittest.main()
-
