@@ -1,0 +1,32 @@
+{
+  "gap": [
+    "codewars.Dbautista.codewars_tasks_5kyu.gap",
+    "codewars.mpeshko.ky5.gap",
+    "codewars.TYakushevych.ky5.gap",
+    "codewars.YuliaShap.kyu5.gap"
+  ],
+  "zeros": [
+    "codewars.Dbautista.codewars_tasks_5kyu.trailing_zeros_in_factorial",
+    "codewars.mpeshko.ky5.zeros",
+    "codewars.TYakushevych.ky5.zeros",
+    "codewars.YuliaShap.kyu5.zeros"
+  ],
+  "perimeter": [
+    "codewars.Dbautista.codewars_tasks_5kyu.perimeter_of_fibonacci_squares",
+    "codewars.mpeshko.ky5.perimeter",
+    "codewars.TYakushevych.ky5.perimeter",
+    "codewars.YuliaShap.kyu5.perimeter"
+  ],
+  "solve": [
+    "codewars.Dbautista.codewars_tasks_5kyu.solve_for_sum",
+    "codewars.mpeshko.ky5.solve",
+    "codewars.TYakushevych.ky5.solve",
+    "codewars.YuliaShap.kyu5.solve"
+  ],
+  "smallest": [
+    "codewars.Dbautista.codewars_tasks_5kyu.find_smallest_by_moving_digit",
+    "codewars.mpeshko.ky5.smallest",
+    "codewars.TYakushevych.ky5.smallest",
+    "codewars.YuliaShap.kyu5.smallest"
+  ]
+}
