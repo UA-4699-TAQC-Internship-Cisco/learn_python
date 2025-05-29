@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 
 
+''' kata ky5 '''
+
+
 def gap(g, m, n):
+    '''kata https://www.codewars.com/kata/gap-in-primes'''
     def is_prime(x):
+        '''is prime'''
         if x < 2:
             return False
         for i in xrange(2, int(x ** 0.5) + 1):
@@ -20,6 +25,7 @@ def gap(g, m, n):
 
 
 def trailing_zeros(n):
+    '''kata https://www.codewars.com/kata/number-of-trailing-zeros-of-n'''
     if n < 0:
         return -1
 
@@ -31,6 +37,7 @@ def trailing_zeros(n):
 
 
 def perimeter_fibonacci(n):
+    '''kata https://www.codewars.com/kata/perimeter-of-squares-in-a-rectangle'''
     a, b = 0, 1
     total = 0
     for i in xrange(n + 1):
@@ -40,6 +47,7 @@ def perimeter_fibonacci(n):
 
 
 def x_for_sum(m):
+    '''kata https://www.codewars.com/kata/which-x-for-that-sum'''
     def f(x):
         return x / ((1 - x) ** 2)
 
@@ -55,6 +63,7 @@ def x_for_sum(m):
 
 
 def smallest(n):
+    '''kata https://www.codewars.com/kata/find-the-smallest'''
     s = str(n)
     min_number = int(s)
     from_i, to_j = 0, 0

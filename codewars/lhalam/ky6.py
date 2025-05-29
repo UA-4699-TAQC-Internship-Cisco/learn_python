@@ -1,28 +1,35 @@
 # -*- coding: utf-8 -*-
+
+
+''' kata ky6 '''
+
+
 import math
 import re
 
 
-def find_nb(m):
-    i,sum = 1,1
-    while sum < m:
-        i+=1
-        sum+=i**3
+def find_nb(integer):
+    '''kata https://www.codewars.com/kata/build-a-pile-of-cubes'''
+    count, cubes = 1, 1
+    while cubes < integer:
+        count += 1
+        cubes += count**3
 
-    return i if m==sum else -1
+    return count if integer == cubes else -1
 
 
 def easy_balance_checking(txt):
+    '''kata https://www.codewars.com/kata/easy-balance-checking'''
     txt_list = txt.split("\n")
     current_balance = float(txt_list[0])
     report = ""
 
     for element in txt_list:
         if element == txt_list[0]:
-            report += "Original_Balance:_{e}\n".format(e = element)
+            report += "Original_Balance:_{e}\n".format(e=element)
         else:
             price = (element.split())[-1]
-            current_balance -=  float(price)
+            current_balance -= float(price)
             report += element.replace(" ", "_") + "_Balance_" + str(current_balance) +"\n"
 
     expense = float(txt_list[0]) - current_balance
@@ -31,11 +38,13 @@ def easy_balance_checking(txt):
     return report
 
 
-def floating_point_approximation(x):
-    return x / (math.sqrt(1 + x) + 1)
+def floating_point_approximation(num):
+    '''kata https://www.codewars.com/kata/floating-point-approximation-i'''
+    return num / (math.sqrt(1 + num) + 1)
 
 
 def rainfall_block(town, strng):
+    '''kata https://www.codewars.com/kata/rainfall'''
     def parse_rainfall(town, strng):
         lines = strng.split('\n')
         for line in lines:
@@ -64,6 +73,7 @@ def rainfall_block(town, strng):
 
 
 def nba_cup(result_sheet, to_find):
+    ''' kata https://www.codewars.com/kata/ranking-nba-teams'''
     if not to_find:
         return ""
 
@@ -123,6 +133,7 @@ def nba_cup(result_sheet, to_find):
 
 
 def bookseller(stocklist, categories):
+    '''kata https://www.codewars.com/kata/help-the-bookseller'''
     if not stocklist or not categories:
         return ""
 
@@ -136,10 +147,6 @@ def bookseller(stocklist, categories):
         if code[0] in category_totals:
             category_totals[code[0]] += quantity
 
-    result = ["({cat} : {count})".format(cat=key, count=val) for key, val in category_totals.items()]
+    result = ["({cat} : {count})".format(cat=key, count=val)
+              for key, val in category_totals.items()]
     return " - ".join(result)
-
-
-
-
-
