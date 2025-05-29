@@ -153,4 +153,4 @@ def stock_list(stocklist, categories):
         if category in totals:
             totals[category] += quantity
 
-    return " - ".join("( %s : %d )" % (cat, totals[cat]) for cat in categories)
+    return " - ".join("(%s : %d)" % (cat, totals[cat]) for cat in categories)
