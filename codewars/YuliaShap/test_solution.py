@@ -14,11 +14,6 @@ from ..mpeshko.ky8 import divisible_by as divisible_by_3
 from ..mpeshko.ky8 import litres as litres_3
 
 
-# from student5.solution import litres as litres_5
-# from student6.solution import litres as litres_6
-# from student7.solution import litres as litres_7
-# from student8.solution import litres as litres_8
-
 
 class TestLitresSolutions(unittest.TestCase):
     def setUp(self):
@@ -27,10 +22,6 @@ class TestLitresSolutions(unittest.TestCase):
             ('Dbautista', litres_2),
             ('mpeshko', litres_3),
             ('TYakushevych', litres_4),
-            # ('student5', litres_5),
-            # ('student6', litres_6),
-            # ('student7', litres_7),
-            # ('student8', litres_8),
         ]
 
         self.test_cases = [
@@ -63,10 +54,6 @@ class TestDivisibleBySolutions(unittest.TestCase):
             ('Dbautista', divisible_by_2),
             ('mpeshko', divisible_by_3),
             ('TYakushevych', divisible_by_4),
-            # ('student5', divisible_by_5),
-            # ('student6', divisible_by_6),
-            # ('student7', divisible_by_7),
-            # ('student8', divisible_by_8),
         ]
 
         self.test_cases = [
@@ -95,10 +82,6 @@ class TestStockListSolutions(unittest.TestCase):
             ('Dbautista', stock_list_2),
             ('mpeshko', stock_list_3),
             ('TYakushevych', stock_list_4),
-            # ('student5', stock_list_5),
-            # ('student6', stock_list_6),
-            # ('student7', stock_list_7),
-            # ('student8', stock_list_8),
         ]
 
         self.test_cases = [
