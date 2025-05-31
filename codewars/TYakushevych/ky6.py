@@ -21,7 +21,7 @@ def find_nb(number): #Build a pile of Cubes
 
 def clean_line(line): #helper for balance
     """Help to clean the line"""
-    allowed = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789. ")
+    allowed = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._ ")
     cleaned = []
     for char in line:
         if char in allowed:
