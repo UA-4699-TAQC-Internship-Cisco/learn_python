@@ -15,13 +15,11 @@ class TestStockListSolutions(unittest.TestCase):
 
     def test_all_stock_list(self):
         for name, kyu in IMPLEMENTATIONS.items():
-            print "\nTesting solution for stock_list: {}".format(name)
             for (stocklist, categories), expected in self.test_cases:
                 result = kyu["kyu6"].stock_list(stocklist, categories)
                 msg = ("[{}] input: {}, got: {}, expected: {}"
                        .format(name, (stocklist, categories), result, expected))
                 self.assertEqual(result, expected, msg)
-            print "Solution '{}' passed all tests!".format(name)
 
 
 if __name__ == '__main__':
