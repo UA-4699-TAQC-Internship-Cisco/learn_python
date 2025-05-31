@@ -89,3 +89,5 @@ def  divisible_by_number(arr, num):
         if item % num == 0:
             result.append(item)
     return result
+
+
