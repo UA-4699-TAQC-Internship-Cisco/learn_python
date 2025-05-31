@@ -1,5 +1,7 @@
 from . import (Dbautista,
-               YuliaShap)
+               YuliaShap,
+               TYakushevych,
+               mpeshko,)
 
 IMPLEMENTATIONS = {
     "Dbautista": {
@@ -14,5 +16,17 @@ IMPLEMENTATIONS = {
         "kyu7": YuliaShap.kyu7,
         "kyu6": YuliaShap.kyu6,
         "kyu5": YuliaShap.kyu5
+    },
+    "TYakushevych": {
+        "kyu8": TYakushevych.ky8,
+        "kyu7": TYakushevych.ky7,
+        "kyu6": TYakushevych.ky6,
+        "kyu5": TYakushevych.ky5
+    },
+    "mpeshko": {
+        "kyu8": mpeshko.ky8,
+        "kyu7": mpeshko.ky7,
+        "kyu6": mpeshko.ky6,
+        "kyu5": mpeshko.ky5
     },
 }

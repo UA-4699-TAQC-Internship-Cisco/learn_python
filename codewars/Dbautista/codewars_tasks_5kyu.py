@@ -37,7 +37,7 @@ def trailing_zeros_in_factorial(number):
     return count
 
 
-def perimeter_of_fibonacci_squares(length):
+def perimeter(length):
     """Return the total perimeter of (length + 1) Fibonacci squares."""
     first, second = 0, 1
     total = 0
