@@ -30,7 +30,7 @@ class TestWilsonPrimes(unittest.TestCase):
     def test_with_numbers(self):
         ''' test's body '''
         for name, func in self.functions:
-            print "Testing solution for Wilson Primes: {}".format(name)
+            print u"Testing solution for Wilson Primes: {}".format(name)
             for number, expected in self.test_cases_positive:
                 result = func(number)
                 msg = ("{} input: {}, got: {}, expected: {}"
@@ -40,13 +40,13 @@ class TestWilsonPrimes(unittest.TestCase):
     def test_negative_val(self):
         ''' test's body '''
         for name, func in self.functions:
-            print "Testing solution for Wilson Primes: {}".format(name)
+            print u"Testing solution for Wilson Primes: {}".format(name)
             for value in self.test_cases_negative:
                 try:
                     result = func(value)
-                    print "Input:", value, "| Output:", result, "| Expected: TypeError"
+                    print u"Input:", value, "| Output:", result, "| Expected: TypeError"
                 except TypeError as e:
-                    print " Input:", value, "| Exception:", type(e).__name__, "-", str(e)
+                    print u"Input:", value, "| Exception:", type(e).__name__, "-", str(e)
 
 
 

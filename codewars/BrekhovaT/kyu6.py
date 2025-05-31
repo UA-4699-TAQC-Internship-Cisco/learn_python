@@ -43,33 +43,34 @@ def floating_point_approximation(num):
     return num / (math.sqrt(1 + num) + 1)
 
 
-def rainfall_block(town, strng):
-    '''kata https://www.codewars.com/kata/rainfall'''
-    def parse_rainfall(town, strng):
-        lines = strng.split('\n')
-        for line in lines:
-            if line.startswith(town + ":"):
-                parts = line.split(":")[1]
-                month_data = parts.split(",")
-                values = [float(item.split(" ")[1]) for item in month_data]
-                return values
-        return None
+# Rainfall '''kata https://www.codewars.com/kata/rainfall'''
+def parse_rainfall(town, strng):
+    lines = strng.split('\n')
+    for line in lines:
+        if line.startswith(town + ":"):
+            parts = line.split(":")[1]
+            month_data = parts.split(",")
+            values = [float(item.split(" ")[1]) for item in month_data]
+            return values
+    return None
 
-    def mean_rainfall(town, strng):
-        values = parse_rainfall(town, strng)
-        if values is None:
-            return -1.0
-        return sum(values) / len(values)
 
-    def variance_rainfall(town, strng):
-        values = parse_rainfall(town, strng)
-        if values is None:
-            return -1.0
-        m = mean_rainfall(town, strng)
-        var = sum((x - m) ** 2 for x in values) / len(values)
-        return var
-    mean_rainfall(town, strng)
-    variance_rainfall(town, strng)
+def mean(town, strng):
+    """Calculate mean rainfall for the town"""
+    values = parse_rainfall(town, strng)
+    if values is None:
+        return -1.0
+    return sum(values) / len(values)
+
+
+def variance(town, strng):
+    """Calculate variance of rainfall for the town"""
+    values = parse_rainfall(town, strng)
+    if values is None:
+        return -1.0
+    m = mean(town, strng)
+    var = sum((x - m) ** 2 for x in values) / len(values)
+    return var
 
 
 def nba_cup(result_sheet, to_find):
