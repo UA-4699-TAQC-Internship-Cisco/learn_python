@@ -75,4 +75,7 @@ def two_decimal_places(number): #Formatting decimal places
 
 def divisible_by(numbers, divisor): #Find numbers which are divisible by given number
     """Find numbers which are divisible by given number"""
+
     return [elem  for elem in numbers if elem % divisor == 0]
+
+

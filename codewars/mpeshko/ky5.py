@@ -42,6 +42,7 @@ def perimeter(number):
 
 def solve(value):
     """Find the number such that the infinite series equals a given value using binary search."""
+
     left = 0.0
     right = 1.0
     eps = 1e-12
