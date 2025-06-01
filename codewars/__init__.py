@@ -1,6 +1,8 @@
-from . import (Dbautista,
-               YuliaShap,
-               mpeshko)
+from . import (
+    Dbautista,
+    YuliaShap,
+    mpeshko
+)
 
 IMPLEMENTATIONS = {
     "Dbautista": {
