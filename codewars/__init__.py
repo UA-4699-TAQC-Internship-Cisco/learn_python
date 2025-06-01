@@ -1,5 +1,8 @@
-from . import (Dbautista,
-               YuliaShap)
+from . import (
+    Dbautista,
+    YuliaShap,
+    mpeshko
+)
 
 IMPLEMENTATIONS = {
     "Dbautista": {
@@ -15,4 +18,11 @@ IMPLEMENTATIONS = {
         "kyu6": YuliaShap.kyu6,
         "kyu5": YuliaShap.kyu5
     },
+
+    "mpeshko": {
+        "kyu8": mpeshko.ky8,
+        "kyu7": mpeshko.ky7,
+        "kyu6": mpeshko.ky6,
+        "kyu5": mpeshko.ky5
+    }
 }
