@@ -15,6 +15,7 @@ class TestDivisibleBySolutions(unittest.TestCase):
     def test_all_divisible_by(self):
         for name, kyu in IMPLEMENTATIONS.items():
             print "\nTesting solution for divisible: {}".format(name)
+
             for (numbers, divisor), expected in self.test_cases:
                 result = kyu["kyu8"].divisible_by(numbers, divisor)
                 msg = ("[{}] input: {}, got: {}, expected: {}"

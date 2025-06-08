@@ -11,7 +11,6 @@ def is_prime(number): #helper function for gap
 
 
 
-
 def gap(g, m, n):#Gap in Primes
     """Find a pair of two prime numbers which difference is equal to g."""
     previous = m
